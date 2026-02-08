@@ -20,10 +20,13 @@
 <body class="preload">
   <header class="topbar">
     <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <img src="./assets/images/brand-icon.png" alt="穿搭精靈 icon" class="brand-icon" />
-        <span>穿搭精靈</span>
-      </a>
+      <div class="brand-wrap">
+        <a href="https://levelupdiary.com/" class="brand-home">
+          <img src="./assets/images/favicon.png" alt="LEVEL UP" class="brand-wordmark" />
+          <span class="brand-home-text">LEVEL UP</span>
+        </a>
+        <span class="brand-app">穿搭精靈</span>
+      </div>
       <a class="btn btn-primary" href="https://levelup-outfit-genie.vercel.app/" target="_blank" rel="noopener" data-event="click_cta_primary">免費開始穿搭</a>
     </div>
   </header>
@@ -224,6 +227,14 @@
   </footer>
   <script>
     (function () {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+      window.addEventListener('pageshow', function () {
+        window.scrollTo(0, 0);
+      });
+
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       document.body.classList.remove('preload');
       if (reducedMotion) {

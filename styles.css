@@ -65,20 +65,49 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   justify-content: space-between;
 }
 
-.brand {
-  font-family: 'Varela Round', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+.brand-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   white-space: nowrap;
 }
 
-.brand-icon {
-  width: 26px;
-  height: 26px;
+.brand-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.brand-wordmark {
+  width: 22px;
+  height: 22px;
   object-fit: contain;
+}
+
+.brand-home-text {
+  font-size: 1.02rem;
+}
+
+.brand-app {
+  position: relative;
+  padding-left: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.brand-app::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 14px;
+  transform: translateY(-50%);
+  background: #cbd5e1;
 }
 
 .hero {
@@ -575,9 +604,15 @@ a:focus-visible,
   .topbar .btn {
     display: none;
   }
-  .brand {
-    font-size: 0.98rem;
+  .brand-wrap {
     gap: 6px;
+  }
+  .brand-home-text {
+    font-size: 0.9rem;
+  }
+  .brand-app {
+    padding-left: 8px;
+    font-size: 0.9rem;
   }
   .btn {
     min-height: 46px;
@@ -605,7 +640,7 @@ a:focus-visible,
     color: #334155;
   }
   .hero-shell {
-    min-height: 560px;
+    min-height: 520px;
   }
   .hero-copy {
     width: calc(100% - 20px);
@@ -618,11 +653,11 @@ a:focus-visible,
     border-radius: 18px;
     border: 0;
     box-shadow: none;
-    backdrop-filter: blur(6px);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.84));
+    backdrop-filter: blur(2px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.94));
   }
   .hero-copy h1 {
-    font-size: clamp(1.28rem, 5.8vw, 1.66rem);
+    font-size: clamp(1.22rem, 5.2vw, 1.5rem);
     line-height: 1.18;
   }
   .hero-copy .lead {
@@ -636,9 +671,9 @@ a:focus-visible,
     padding: 6px 10px;
     font-size: 0.95rem;
   }
-  .brand-icon {
-    width: 22px;
-    height: 22px;
+  .brand-wordmark {
+    width: 18px;
+    height: 18px;
   }
   .compare-table {
     min-width: 560px;
