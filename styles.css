@@ -72,6 +72,7 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
 
 .brand-icon {
@@ -206,6 +207,12 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   border: 1px solid transparent;
   font-weight: 800;
   transition: background-color 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out;
+}
+
+.topbar .btn {
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 0.95rem;
 }
 
 .btn-primary {
@@ -562,13 +569,43 @@ a:focus-visible,
   .narrow { width: min(1200px, calc(100% - 24px)); }
   .cards.three,
   .steps { grid-template-columns: 1fr; }
-  .btn {
-    width: 100%;
-    min-height: 48px;
+  .topbar .nav-inner {
+    height: 56px;
   }
-  .cta-row { width: 100%; }
+  .topbar .btn {
+    display: none;
+  }
+  .brand {
+    font-size: 0.98rem;
+    gap: 6px;
+  }
+  .btn {
+    min-height: 46px;
+  }
+  .cta-row {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cta-row .btn-primary,
+  .final-cta .btn,
+  .plan-card .btn {
+    width: 100%;
+  }
+  .cta-row .btn-secondary {
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    justify-content: flex-start;
+    font-weight: 700;
+    color: #334155;
+  }
   .hero-shell {
-    min-height: 520px;
+    min-height: 560px;
   }
   .hero-copy {
     width: calc(100% - 20px);
@@ -577,12 +614,27 @@ a:focus-visible,
     bottom: 10px;
     top: auto;
     min-height: auto;
-    padding: 24px 16px;
+    padding: 18px 14px;
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.84));
   }
   .hero-copy h1 {
-    font-size: clamp(1.42rem, 6.6vw, 1.88rem);
+    font-size: clamp(1.28rem, 5.8vw, 1.66rem);
+    line-height: 1.18;
+  }
+  .hero-copy .lead {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .trust-list {
+    gap: 8px;
+  }
+  .trust-list li {
+    padding: 6px 10px;
+    font-size: 0.95rem;
   }
   .brand-icon {
     width: 22px;
