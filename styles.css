@@ -72,10 +72,30 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
 }
 
 .hero-grid {
+  position: relative;
   display: grid;
   gap: 28px;
   align-items: center;
   grid-template-columns: 1.05fr 0.95fr;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: -120px auto auto -80px;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.35), rgba(249, 115, 22, 0)),
+    radial-gradient(circle at 70% 70%, rgba(37, 99, 235, 0.25), rgba(37, 99, 235, 0));
+  filter: blur(8px);
+  animation: hero-float 10s ease-in-out infinite alternate;
 }
 
 .eyebrow {
@@ -160,6 +180,10 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   overflow: hidden;
   background: #fff;
   box-shadow: var(--shadow);
+}
+
+.hero-image {
+  transform-origin: center;
 }
 
 .cards {
@@ -383,9 +407,55 @@ a:focus-visible,
   outline-offset: 2px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 360ms ease-out, transform 360ms ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preload .hero-enter {
+  opacity: 0;
+}
+
+.hero-enter {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: hero-enter 420ms ease-out forwards;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+@keyframes hero-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(22px, -12px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-8px, 18px, 0) scale(0.98);
+  }
+}
+
 @media (max-width: 1024px) {
   .container { width: min(1200px, calc(100% - 40px)); }
   .hero-grid { grid-template-columns: 1fr; }
+  .hero-glow {
+    width: 320px;
+    height: 320px;
+    inset: -80px auto auto -60px;
+  }
   .pricing-grid { grid-template-columns: 1fr; }
 }
 
@@ -411,5 +481,10 @@ a:focus-visible,
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+  .reveal,
+  .hero-enter {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;700;800&family=Varela+Round&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
-<body>
+<body class="preload">
   <header class="topbar">
     <div class="container nav-inner">
       <a href="#top" class="brand">穿搭精靈</a>
@@ -24,29 +24,30 @@
   </header>
 
   <main id="top">
-    <section class="hero section">
+    <section class="hero section reveal">
+      <div class="hero-glow" aria-hidden="true"></div>
       <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">OOTD AI 助手</p>
-          <h1>不再煩惱明天要穿什麼，<br />穿搭精靈替妳搞定 OOTD</h1>
-          <p class="lead">每天少一點猶豫，多一點自信。從自選穿搭到虛擬試穿，幫你把穿搭決策變簡單。</p>
-          <div class="cta-row">
+        <div class="hero-copy">
+          <p class="eyebrow hero-enter">OOTD AI 助手</p>
+          <h1 class="hero-enter">不再煩惱明天要穿什麼，<br />穿搭精靈替妳搞定 OOTD</h1>
+          <p class="lead hero-enter">每天少一點猶豫，多一點自信。從自選穿搭到虛擬試穿，幫你把穿搭決策變簡單。</p>
+          <div class="cta-row hero-enter">
             <a class="btn btn-primary" href="https://levelup-outfit-genie.vercel.app/" target="_blank" rel="noopener" data-event="click_cta_primary">免費開始穿搭</a>
             <a class="btn btn-secondary" href="#pricing">查看方案</a>
           </div>
-          <ul class="trust-list" aria-label="核心價值">
+          <ul class="trust-list hero-enter" aria-label="核心價值">
             <li>快速搭配</li>
             <li>虛擬試穿</li>
             <li>購物助手</li>
           </ul>
         </div>
-        <figure class="image-card">
+        <figure class="image-card hero-image hero-enter">
           <img src="./assets/images/hero.png" alt="穿搭精靈主視覺" loading="eager" decoding="async" />
         </figure>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section reveal">
       <div class="container">
         <h2>每天早上都在衣櫃前卡關嗎？</h2>
         <div class="cards three">
@@ -69,7 +70,7 @@
       </div>
     </section>
 
-    <section class="section accent">
+    <section class="section accent reveal">
       <div class="container">
         <p class="eyebrow">主打流程</p>
         <h2>先選，再試，再決定</h2>
@@ -84,7 +85,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section reveal">
       <div class="container">
         <h2>三大功能，天天用得到</h2>
         <div class="cards three">
@@ -107,7 +108,7 @@
       </div>
     </section>
 
-    <section id="pricing" class="section accent">
+    <section id="pricing" class="section accent reveal">
       <div class="container">
         <p class="eyebrow">Pricing</p>
         <h2>方案與價格</h2>
@@ -188,7 +189,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section reveal">
       <div class="container narrow">
         <h2>常見問題</h2>
         <div class="faq">
@@ -218,5 +219,30 @@
       <small>© 2026 穿搭精靈 Outfit Genie</small>
     </div>
   </footer>
+  <script>
+    (function () {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.body.classList.remove('preload');
+      if (reducedMotion) {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+        return;
+      }
+
+      document.querySelectorAll('.hero-enter').forEach((el, index) => {
+        el.style.setProperty('--hero-delay', (index * 120) + 'ms');
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    })();
+  </script>
 </body>
 </html>
