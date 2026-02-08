@@ -97,6 +97,9 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   font-size: 1rem;
   font-weight: 700;
   color: #334155;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .brand-app::before {
@@ -108,6 +111,12 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   height: 14px;
   transform: translateY(-50%);
   background: #cbd5e1;
+}
+
+.brand-app-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .hero {
@@ -613,6 +622,11 @@ a:focus-visible,
   .brand-app {
     padding-left: 8px;
     font-size: 0.9rem;
+    gap: 5px;
+  }
+  .brand-app-icon {
+    width: 14px;
+    height: 14px;
   }
   .btn {
     min-height: 46px;
