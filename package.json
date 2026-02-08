@@ -1,0 +1,12 @@
+{
+  "name": "cloth-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "穿搭精靈商說頁",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo \"Static landing page - no build step\"",
+    "preview": "npx serve ."
+  }
+}
+
