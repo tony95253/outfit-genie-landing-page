@@ -212,7 +212,9 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
 }
 
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 10px;
   padding: 6px 12px;
   border-radius: 999px;
@@ -220,6 +222,12 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   color: #9a3412;
   font-weight: 700;
   font-size: 0.86rem;
+}
+
+.eyebrow-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
 }
 
 .lead {
@@ -275,22 +283,43 @@ p { margin: 0; line-height: 1.7; color: var(--muted); }
   background: #f8fafc;
 }
 
-.trust-list {
+.feature-block {
   margin: 16px 0 0;
+}
+
+.feature-title {
+  margin: 0 0 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.trust-list {
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .trust-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 7px 12px;
   font-weight: 700;
   color: #334155;
+  font-size: 0.95rem;
+}
+
+.trust-list li svg {
+  width: 14px;
+  height: 14px;
+  color: #64748b;
 }
 
 .image-card {
@@ -729,10 +758,12 @@ a:focus-visible,
   }
   .trust-list {
     gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .trust-list li {
-    padding: 6px 10px;
-    font-size: 0.95rem;
+    padding: 7px 9px;
+    font-size: 0.9rem;
   }
   .brand-wordmark {
     width: 18px;
